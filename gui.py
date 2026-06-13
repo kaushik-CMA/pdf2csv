@@ -54,7 +54,7 @@ def  start_gui():
             status_box.insert(tk.END, f"{output}\n")
 
        except Exception as e:
-        messagebox.showerror("Error", str(e))
+        messagebox.showerror("Conversion Error", str(e))
 
     tk.Button(root, text="Convert", command=convert).pack()
 
