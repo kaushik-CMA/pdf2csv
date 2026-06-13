@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 from core.file_discovery import get_pdf_files
 from core.processor import process
 
@@ -38,6 +38,7 @@ def  start_gui():
     status_box.pack(fill="both",expand=True)
 
     def convert():
+       try:
         path = path_entry.get().strip()
 
         regex_pattern = regex_entry.get().strip()
@@ -51,6 +52,9 @@ def  start_gui():
         status_box.insert(tk.END, f"Found {len(pdfs)} PDF(s)\n\n")
         for output in outputs:
             status_box.insert(tk.END, f"{output}\n")
+
+       except Exception as e:
+        messagebox.showerror("Error", str(e))
 
     tk.Button(root, text="Convert", command=convert).pack()
 
